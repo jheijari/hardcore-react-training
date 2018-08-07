@@ -2,8 +2,10 @@ import App from "../App";
 import { connect } from "react-redux";
 import { firePerson, hirePerson, getPersons } from "../../ducks/person";
 import { withRouter } from "react-router";
+import { compose } from "recompose";
 
-export default withRouter(
+export default compose(
+  withRouter,
   connect(
     state => ({
       persons: state.person.get("persons"),
@@ -14,5 +16,5 @@ export default withRouter(
       hirePerson,
       getPersons
     }
-  )(App)
-);
+  )
+)(App);
